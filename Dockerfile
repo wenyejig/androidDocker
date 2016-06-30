@@ -2,9 +2,9 @@ FROM index.alauda.cn/wenyeji/dockerbase:alpine-jdk8
 
 MAINTAINER wenyeji "wenyeji@gmail.com"
 
-ENV ANT_VERSION 1.9.6
+ENV ANT_VERSION 1.9.7
 RUN cd && \
-    wget -q http://mirrors.hust.edu.cn/apache//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz  && \
+    wget -q http://archive.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
     tar -xzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
     mv apache-ant-${ANT_VERSION} /opt/ant && \
     rm apache-ant-${ANT_VERSION}-bin.tar.gz
