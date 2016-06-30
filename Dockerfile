@@ -2,7 +2,7 @@ FROM index.alauda.cn/wenyeji/dockerbase:alpine-jdk8
 
 MAINTAINER wenyeji "wenyeji@gmail.com"
 
-RUN apk add --no-cache expect ca-certificates && update-ca-certificates
+RUN apk add --no-cache expect
 
 RUN mkdir -p /opt/android-sdk-linux/platform-tools/adb
 
@@ -17,7 +17,7 @@ ENV PATH ${PATH}:/opt/ant/bin
 
 ENV ANDROID_VERSION  r24.4.1
 
-RUN cd /opt && wget -O android-sdk.tgz -q https://dl.google.com/android/android-sdk_${ANDROID_VERSION}-linux.tgz && tar xzf android-sdk.tgz && rm -f android-sdk.tgz && chown -R root.root android-sdk-linux
+RUN cd /opt && wget -O android-sdk.tgz -q http://dl.google.com/android/android-sdk_${ANDROID_VERSION}-linux.tgz && tar xzf android-sdk.tgz && rm -f android-sdk.tgz && chown -R root.root android-sdk-linux
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
