@@ -1,4 +1,4 @@
-FROM java:openjdk-8-jdk
+FROM java:8-jdk
 
 MAINTAINER wenyeji "wenyeji@gmail.com"
 
