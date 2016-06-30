@@ -2,6 +2,15 @@ FROM index.alauda.cn/wenyeji/dockerbase:alpine-jdk8
 
 MAINTAINER wenyeji "wenyeji@gmail.com"
 
+ENV ANT_VERSION 1.9.6
+RUN cd && \
+    wget -q http://www.us.apache.org/dist//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    tar -xzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    mv apache-ant-${ANT_VERSION} /opt/ant && \
+    rm apache-ant-${ANT_VERSION}-bin.tar.gz
+ENV ANT_HOME /opt/ant
+ENV PATH ${PATH}:/opt/ant/bin
+
 ENV ANDROID_VERSION  r24.4.1
 
 RUN mkdir -p /opt/tools && cd /opt && wget -O android-sdk.tgz -q http://dl.google.com/android/android-sdk_${ANDROID_VERSION}-linux.tgz && tar xzf android-sdk.tgz && rm -f android-sdk.tgz && chown -R root.root android-sdk-linux
