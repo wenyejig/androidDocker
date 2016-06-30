@@ -1,8 +1,12 @@
-FROM index.alauda.cn/wenyeji/dockerbase:alpine-jdk8
+FROM java:8-jdk-alpine
 
 MAINTAINER wenyeji "wenyeji@gmail.com"
 
-RUN apk add --no-cache expect
+RUN apk add --no-cache expect tzdata
+
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo "Asia/Shanghai" > /etc/timezone
+RUN apk del tzdata
 
 RUN mkdir -p /opt/android-sdk-linux/platform-tools/adb
 
