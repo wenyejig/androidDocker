@@ -8,7 +8,6 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo "Asia/Shanghai" > /etc/timezone
 RUN apk del tzdata
 
-RUN mkdir -p /opt/android-sdk-linux/platform-tools/adb
 
 ENV ANT_VERSION 1.9.7
 RUN cd && \
@@ -26,7 +25,7 @@ RUN cd /opt && wget -O android-sdk.tgz -q http://dl.google.com/android/android-s
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
-VOLUME /opt/android-sdk-linux
+RUN mkdir -p /opt/android-sdk-linux/platform-tools/adb
 
 COPY tools /opt/tools
 ENV PATH ${PATH}:/opt/tools
